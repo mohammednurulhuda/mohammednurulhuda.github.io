@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hudafiles.com</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <div class="bg-image"></div>
+    
+    <nav class="navbar">
+        <div class="logo">Hudafiles.com</div>
+        <div class="nav-links">
+            <button onclick="navigate('home')">Home</button>
+            <button onclick="navigate('works')">Works</button>
+            <button onclick="navigate('contact')">Contact</button>
+            <button id="theme-toggle" onclick="toggleTheme()">☀️ Light Mode</button>
+        </div>
+    </nav>
 
+    <main>
+        <section id="home" class="page active">
+            <h1>Welcome to Hudafiles</h1>
+            <p>More content coming soon...</p>
+        </section>
+
+        <section id="works" class="page">
+            <h2>My Works</h2>
+            <div class="grid-container">
+                <button class="card" onclick="navigate('projects-list')">
+                    <h3>Projects</h3>
+                </button>
+                <button class="card" onclick="navigate('articles-list')">
+                    <h3>Articles</h3>
+                </button>
+            </div>
+        </section>
+
+        <section id="projects-list" class="page">
+            <button class="back-btn" onclick="navigate('works')">← Back</button>
+            <h2>Projects</h2>
+            <div class="grid-container">
+                <button class="card" onclick="openArticle('Project Alpha', 'Here are the details for Project Alpha. It supports images below!', 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600')">
+                    <h3>Project Alpha</h3>
+                </button>
+                <button class="card" onclick="openArticle('Project Beta', 'Details about Project Beta. No image attached to this one.', '')">
+                    <h3>Project Beta</h3>
+                </button>
+            </div>
+        </section>
+
+        <section id="articles-list" class="page">
+            <button class="back-btn" onclick="navigate('works')">← Back</button>
+            <h2>Articles</h2>
+            <div class="grid-container">
+                <button class="card" onclick="openArticle('My First Article', 'This is a sample article that supports GIFs!', 'https://media.giphy.com/media/3o7aD2saalEvTehEX2/giphy.gif')">
+                    <h3>My First Article</h3>
+                </button>
+            </div>
+        </section>
+
+        <section id="article-detail" class="page">
+            <button class="back-btn" onclick="navigate('works')">← Back to Works</button>
+            <h2 id="article-title">Title</h2>
+            <div class="article-content">
+                <p id="article-text">Content goes here...</p>
+                <img id="article-media" src="" alt="Media Content" style="display: none;">
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <h2>Contact Me</h2>
+            <div class="article-content">
+                <p>Email: contact@hudafiles.com</p>
+                <p>Discord: YourDiscordTag</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
