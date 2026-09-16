@@ -28,7 +28,7 @@ const views = {
                 <button class="pixel-btn" onclick="navigate('works')">EXPLORE WORKS ➔</button>
             </div>
             <div class="scroll-indicator">
-                ▼ SCROLL DOWN TO REVEAL POWER GRID
+                {we live stand beside us}
             </div>
         </div>
     `,
