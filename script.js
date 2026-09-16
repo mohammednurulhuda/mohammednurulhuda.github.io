@@ -61,7 +61,7 @@ const views = {
             </div>
             
             <div class="profile-box">
-                <img src="mohammednurulhuda.png" alt="Mohammed Nurul Huda" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop'">
+                <img src="Author.jpg" alt="Mohammed Nurul Huda" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop'">
                 <h3 style="font-family:'IBM Plex Mono', monospace;">Mohammed Nurul Huda</h3>
                 <p style="font-size:0.85rem; color:var(--text-soft); margin-top:4px;">Physics Enthusiast &amp; Developer</p>
             </div>
@@ -72,6 +72,10 @@ const views = {
 // 3. Router
 function navigate(pageId) {
     const app = document.getElementById('app');
+
+    // Switch body background class (bg-home, bg-works, or bg-contact)
+    document.body.className = `bg-${pageId}`;
+
     if (pageId === 'home') app.innerHTML = views.home;
     else if (pageId === 'contact') app.innerHTML = views.contact;
     else if (pageId === 'works') {
