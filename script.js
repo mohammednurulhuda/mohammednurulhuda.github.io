@@ -1,83 +1,110 @@
-// Function to switch between pages
-function navigate(pageId) {
-    // Hide all pages by removing the 'active' class
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-    });
-    // Show the target page
-    document.getElementById(pageId).classList.add('active');
-    
-    // Scroll to top when changing pages
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Function to handle Light / Dark mode
+// 1. Theme Toggling
 let isDarkMode = true;
-
 function toggleTheme() {
-    const body = document.body;
+    const htmlElement = document.documentElement;
     const themeBtn = document.getElementById('theme-toggle');
     
-    isDarkMode = !isDarkMode; // Flip the state
-    
+    isDarkMode = !isDarkMode;
     if (isDarkMode) {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
+        htmlElement.setAttribute('data-theme', 'dark');
         themeBtn.innerText = '☀️ Light Mode';
     } else {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
+        htmlElement.setAttribute('data-theme', 'light');
         themeBtn.innerText = '🌙 Dark Mode';
     }
 }
 
-// Function to populate and open a detailed article/project
-function openArticle(title, text, mediaUrl) {
-    // Set the text content
-    document.getElementById('article-title').innerText = title;
-    document.getElementById('article-text').innerText = text;
+// 2. Page Templates
+const views = {
+    home: `
+        <h1 class="section-title">Welcome!</h1>
+        <p style="font-size: 1.2rem; line-height: 1.6; color: var(--text-soft);">This is a dedicated place for science nerds, especially for lovers of physics!</p>
+    `,
+    contact: `
+        <h1 class="section-title">Contact Me</h1>
+        <div class="forum-card" style="max-width: 400px; cursor: default; transform: none;">
+            <p>Email: contact@hudafiles.com</p>
+            <p>Discord: YourDiscordTag</p>
+        </div>
+    `,
+    works: `
+        <h1 class="section-title">My Works</h1>
+        <div class="btn-cluster">
+            <button class="pixel-btn" onclick="loadArticles()">Refresh Data</button>
+        </div>
+        <div class="grid" id="content-grid">
+            <p style="color: var(--text-soft);">Loading connection to matrix...</p>
+        </div>
+    `,
+    articleDetail: (title, text, mediaUrl) => `
+        <button class="pixel-btn" style="margin-bottom: 2rem;" onclick="navigate('works')">← Back</button>
+        <h1 class="section-title">${title}</h1>
+        <div class="forum-card" style="cursor: default; transform: none; padding: 2rem;">
+            ${mediaUrl ? `<img src="${mediaUrl}" style="width:100%; max-height:450px; object-fit:cover; border-radius:8px; margin-bottom:1.5rem;">` : ''}
+            <div class="article-detail-body">${text}</div>
+        </div>
+    `
+};
+
+// 3. Router logic
+function navigate(pageId) {
+    const app = document.getElementById('app');
     
-    // Handle the image or GIF
-    const mediaElement = document.getElementById('article-media');
-    
-    // If a media URL was provided in the HTML, show it
-    if (mediaUrl !== '') {
-        mediaElement.src = mediaUrl;
-        mediaElement.style.display = 'block';
-    } else {
-        // If no image, hide the image tag entirely
-        mediaElement.style.display = 'none';
-        mediaElement.src = '';
+    if (pageId === 'home') app.innerHTML = views.home;
+    else if (pageId === 'contact') app.innerHTML = views.contact;
+    else if (pageId === 'works') {
+        app.innerHTML = views.works;
+        loadArticles(); // Fetch CMS data when Works tab is opened
     }
     
-    // Navigate to the article details page
-    navigate('article-detail');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// 4. Open specific article logic
+function openArticle(title, text, mediaUrl) {
+    const app = document.getElementById('app');
+    app.innerHTML = views.articleDetail(title, text, mediaUrl);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 5. Build Cards from Decap CMS data
 function loadArticles() {
-    // Fetch the JSON file the CMS creates
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
-            const articlesContainer = document.querySelector('#articles-list .grid-container');
-            articlesContainer.innerHTML = ''; // Clear out the hardcoded examples
+            const grid = document.getElementById('content-grid');
             
-            // Loop through your real articles and create buttons
-            data.items.forEach(article => {
-                const btn = document.createElement('button');
-                btn.className = 'card';
-                
-                // If no image is uploaded, use an empty string
-                const mediaUrl = article.media ? article.media : '';
-                
-                btn.onclick = () => openArticle(article.title, article.text, mediaUrl);
-                btn.innerHTML = `<h3>${article.title}</h3>`;
-                
-                articlesContainer.appendChild(btn);
-            });
+            if (data.items && data.items.length > 0) {
+                // Map the CMS data into the new Discord card HTML
+                grid.innerHTML = data.items.map(item => {
+                    // Fallback image if no media was uploaded in CMS
+                    const imageUrl = item.media ? item.media : 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop';
+                    
+                    // Escape quotes in text so they don't break the onclick handler
+                    const safeText = item.text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    const safeTitle = item.title.replace(/'/g, "\\'");
+                    
+                    return `
+                    <div class="forum-card" onclick="openArticle('${safeTitle}', '${safeText}', '${imageUrl}')">
+                        <div class="card-meta-top"><span class="card-author">Mohammed Nurul Huda</span> &bull; <span>Author</span></div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <div class="card-image-wrapper">
+                            <img src="${imageUrl}">
+                            <div class="card-tags"><span class="tag">#read</span></div>
+                        </div>
+                        <div class="card-footer"><span>💬 Read</span><span>👾</span></div>
+                    </div>
+                    `;
+                }).join('');
+            } else {
+                grid.innerHTML = '<p style="color: var(--text-soft);">No articles published yet.</p>';
+            }
         })
-        .catch(err => console.log("No articles published yet!", err));
+        .catch(err => {
+            console.log("No articles published yet!", err);
+            document.getElementById('content-grid').innerHTML = '<p style="color: var(--text-soft);">No content published yet. Go to /admin/ to add some!</p>';
+        });
 }
 
-// Run the function when the page loads
-loadArticles();
+// Load Home page by default
+navigate('home');

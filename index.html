@@ -1,83 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mohammednurulhuda.github.io</title>
+    <title>Mohammed Nurul Huda | Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="mohammednurulhuda.png">
 </head>
-<body class="dark-mode">
-    <div class="bg-image"></div>
-    
-    <nav class="navbar">
-        <div class="logo">mohammednurulhuda.github.io</div>
-        <div class="nav-links">
-            <button onclick="navigate('home')">Home</button>
-            <button onclick="navigate('works')">Works</button>
-            <button onclick="navigate('contact')">Contact</button>
-            <button id="theme-toggle" onclick="toggleTheme()">☀️ Light Mode</button>
-        </div>
+<body>
+
+<header class="top-bar">
+    <a class="wordmark" href="#home" onclick="navigate('home')">mohammednurulhuda.github.io</a>
+    <nav class="nav-tabs">
+        <a href="#home" onclick="navigate('home')">Home</a>
+        <a href="#works" onclick="navigate('works')">Works</a>
+        <a href="#contact" onclick="navigate('contact')">Contact</a>
+        <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()">☀️ Light Mode</button>
     </nav>
+</header>
 
-    <main>
-        <section id="home" class="page active">
-            <h1>Welcome!<br>This is a dedicated place for science nerds, especially for lovers of physics!</h1>
-        </section>
+<main id="app"></main>
 
-        <section id="works" class="page">
-            <h2>My Works</h2>
-            <div class="grid-container">
-                <button class="card" onclick="navigate('projects-list')">
-                    <h3>Projects</h3>
-                </button>
-                <button class="card" onclick="navigate('articles-list')">
-                    <h3>Articles</h3>
-                </button>
-            </div>
-        </section>
+<footer>
+    <!-- Isometric Green Blocks SVG -->
+    <svg class="electrical-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <defs>
+            <linearGradient id="greenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#34d399" />
+                <stop offset="100%" stop-color="#059669" />
+            </linearGradient>
+        </defs>
+        <path d="M 200 150 L 250 120 L 300 150 L 250 180 Z" fill="url(#greenGlow)"/>
+        <path d="M 200 150 L 250 180 L 250 220 L 200 190 Z" fill="#047857"/>
+        <path d="M 300 150 L 250 180 L 250 220 L 300 190 Z" fill="#064e3b"/>
+        <path d="M 700 110 L 780 70 L 860 110 L 780 150 Z" fill="url(#greenGlow)"/>
+        <path d="M 700 110 L 780 150 L 780 220 L 700 180 Z" fill="#047857"/>
+        <path d="M 860 110 L 780 150 L 780 220 L 860 180 Z" fill="#064e3b"/>
+        <path d="M 0 100 L 1000 100" stroke="#23a559" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+    </svg>
+    <div class="footer-text">© 2026 Mohammed Nurul Huda</div>
+</footer>
 
-        <section id="projects-list" class="page">
-            <button class="back-btn" onclick="navigate('works')">← Back</button>
-            <h2>Projects</h2>
-            <div class="grid-container">
-                <button class="card" onclick="openArticle('Project Alpha', 'Here are the details for Project Alpha. It supports images below!', 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600')">
-                    <h3>Project Alpha</h3>
-                </button>
-                <button class="card" onclick="openArticle('Project Beta', 'Details about Project Beta. No image attached to this one.', '')">
-                    <h3>Project Beta</h3>
-                </button>
-            </div>
-        </section>
-
-        <section id="articles-list" class="page">
-            <button class="back-btn" onclick="navigate('works')">← Back</button>
-            <h2>Articles</h2>
-            <div class="grid-container">
-                <button class="card" onclick="openArticle('My First Article', 'This is a sample article that supports GIFs!', 'https://media.giphy.com/media/3o7aD2saalEvTehEX2/giphy.gif')">
-                    <h3>My First Article</h3>
-                </button>
-            </div>
-        </section>
-
-        <section id="article-detail" class="page">
-            <button class="back-btn" onclick="navigate('works')">← Back to Works</button>
-            <h2 id="article-title">Title</h2>
-            <div class="article-content">
-                <p id="article-text">Content goes here...</p>
-                <img id="article-media" src="" alt="Media Content" style="display: none;">
-            </div>
-        </section>
-
-        <section id="contact" class="page">
-            <h2>Contact Me</h2>
-            <div class="article-content">
-                <p>Email: contact@hudafiles.com</p>
-                <p>Discord: YourDiscordTag</p>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
