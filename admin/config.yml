@@ -1,7 +1,9 @@
 backend:
   name: git-gateway
-  repo: github.com/mohammednurulhuda/mohammednurulhuda.github.io # ⚠️ REPLACE THIS
   branch: main
+
+site_url: https://mohammednurulhuda.netlify.app
+display_url: https://mohammednurulhuda.github.io
 
 media_folder: "images" # Folder where uploaded images go
 public_folder: "images" # How the website finds those images
