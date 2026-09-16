@@ -53,3 +53,31 @@ function openArticle(title, text, mediaUrl) {
     // Navigate to the article details page
     navigate('article-detail');
 }
+
+function loadArticles() {
+    // Fetch the JSON file the CMS creates
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            const articlesContainer = document.querySelector('#articles-list .grid-container');
+            articlesContainer.innerHTML = ''; // Clear out the hardcoded examples
+            
+            // Loop through your real articles and create buttons
+            data.items.forEach(article => {
+                const btn = document.createElement('button');
+                btn.className = 'card';
+                
+                // If no image is uploaded, use an empty string
+                const mediaUrl = article.media ? article.media : '';
+                
+                btn.onclick = () => openArticle(article.title, article.text, mediaUrl);
+                btn.innerHTML = `<h3>${article.title}</h3>`;
+                
+                articlesContainer.appendChild(btn);
+            });
+        })
+        .catch(err => console.log("No articles published yet!", err));
+}
+
+// Run the function when the page loads
+loadArticles();

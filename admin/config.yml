@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: github.com/mohammednurulhuda/mohammednurulhuda.github.io # ⚠️ REPLACE THIS
+  branch: main
+
+media_folder: "images" # Folder where uploaded images go
+public_folder: "images" # How the website finds those images
+
+collections:
+  - name: "content"
+    label: "Website Content"
+    files:
+      - label: "My Articles"
+        name: "articles_data"
+        file: "data.json" # The CMS will save everything here!
+        fields:
+          - label: "List of Articles"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Content", name: "text", widget: "text"}
+              - {label: "Image URL", name: "media", widget: "image", required: false}
