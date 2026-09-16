@@ -22,7 +22,7 @@ const views = {
         <div class="home-container">
             <h1 class="pixel-title">WELCOME!</h1>
             <p class="pixel-subtitle">
-                A dedicated space for science nerds, quantum enthusiasts, and lovers of physics!
+                A dedicated space for science nerds and lovers of physics!
             </p>
             <div style="margin-top: 1rem;">
                 <button class="pixel-btn" onclick="navigate('works')">EXPLORE WORKS ➔</button>
@@ -32,6 +32,7 @@ const views = {
             </div>
         </div>
     `,
+    // ... rest of your code stays the same
     works: `
         <h1 class="pixel-title" style="font-size:3rem; margin-bottom: 1rem;">MY WORKS</h1>
         <div class="grid" id="content-grid">

@@ -48,7 +48,8 @@ body.bg-works {
 }
 
 body.bg-contact {
-  background-image: linear-gradient(rgba(15, 16, 21, 0.75), rgba(15, 16, 21, 0.75)), url('BG2.jpeg');
+  /* Changed url from 'BG2.jpeg' to 'BG2.jpg' */
+  background-image: linear-gradient(rgba(15, 16, 21, 0.75), rgba(15, 16, 21, 0.75)), url('BG2.jpg');
 }
 
 /* Home Screen Readability Enhancements */
