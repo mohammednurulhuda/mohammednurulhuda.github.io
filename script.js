@@ -28,7 +28,7 @@ const views = {
                 <button class="pixel-btn" onclick="navigate('works')">EXPLORE WORKS ➔</button>
             </div>
             <div class="scroll-indicator">
-                {we live stand beside us}
+                {we live to stand beside us}
             </div>
         </div>
     `,
