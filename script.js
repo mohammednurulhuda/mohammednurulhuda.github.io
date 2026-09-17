@@ -189,14 +189,14 @@ function loadArticles() {
                     `;
                 }).join('');
             } else if (grid) {
-                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">No articles published yet.</p>';
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: NO ARTICLES PUBLISHED YET ]</p>';
             }
         })
         .catch(err => {
             console.log("CMS Data Fetch Error:", err);
             const grid = document.getElementById('content-grid');
             if (grid) {
-                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">No articles found in data.json. Add one via /admin/</p>';
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: DATA FILE NOT FOUND ]</p>';
             }
         });
 }
@@ -226,14 +226,14 @@ function loadProjects() {
                     `;
                 }).join('');
             } else if (grid) {
-                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">No projects published yet.</p>';
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: PROJECTS COMING SOON ]</p>';
             }
         })
         .catch(err => {
             console.log("CMS Data Fetch Error:", err);
             const grid = document.getElementById('projects-grid');
             if (grid) {
-                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">No projects found. Add one via the Admin panel!</p>';
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: PROJECTS DATABASE INITIALIZING... CHECK BACK LATER ]</p>';
             }
         });
 }

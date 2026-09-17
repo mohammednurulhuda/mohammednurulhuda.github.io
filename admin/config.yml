@@ -12,14 +12,14 @@ collections:
   - name: "content"
     label: "Website Content"
     files:
-      # --- YOUR EXISTING ARTICLES SECTION ---
       - label: "My Articles"
         name: "articles"
         file: "data.json"
         fields:
-          # ... (your existing article fields stay here) ...
-      
-      # --- ADD THIS NEW PROJECTS SECTION ---
+          # You must have array items starting with "-" here:
+          - {label: "Article Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          
       - label: "My Projects"
         name: "projects"
         file: "projects.json"
@@ -27,6 +27,7 @@ collections:
           - label: "Project List"
             name: "items"
             widget: "list"
+            # ... (rest of your projects config)
             fields:
               - {label: "Project Title", name: "title", widget: "string"}
               - {label: "Cover Image", name: "media", widget: "image", required: false}
