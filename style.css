@@ -330,3 +330,33 @@ footer {
     font-size: 1.05rem;
     text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
 }
+
+/* --- MOBILE LAYOUT FIXES --- */
+@media screen and (max-width: 768px) {
+    body {
+        /* Prevents the background from zooming in massively on phones */
+        background-attachment: scroll !important; 
+        background-position: center top !important;
+    }
+
+    .home-container {
+        /* Removes the giant empty space */
+        min-height: 75vh !important; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 1rem !important;
+    }
+
+    .pixel-title {
+        font-size: 2.2rem !important; /* Scales down massive text */
+    }
+
+    .scroll-indicator {
+        /* Pulls the bottom text up closer to the button */
+        margin-top: 3rem !important;
+        position: relative !important;
+        bottom: auto !important;
+    }
+}
