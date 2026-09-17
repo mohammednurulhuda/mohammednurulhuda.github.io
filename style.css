@@ -204,3 +204,129 @@ footer {
 .electrical-svg.pop-up .server-cubes {
   transform: translateY(0); 
 }
+
+/* =========================================
+   FIXED PAGE HEIGHTS
+   Ensures all pages are long enough to reveal 
+   the footer properly on scroll
+========================================= */
+.works-container, .contact-container, .articles-container, .projects-container {
+    min-height: 110vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   WORKS PAGE: CATEGORY LAYOUT
+========================================= */
+.category-grid {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap; 
+}
+
+.category-box {
+    width: 320px;
+    height: 480px;
+    background-color: var(--surface);
+    border: 2px solid var(--accent-green);
+    border-radius: 8px;
+    overflow: hidden; /* Important for the zoom effect to stay inside the box */
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    box-shadow: var(--pixel-shadow);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* 🌟 CUSTOM FX: Hover Glow and Scale up */
+.category-box:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(35, 165, 89, 0.35), 0 0 20px rgba(35, 165, 89, 0.2) inset;
+    border-color: #34d399; /* Brightens the green border */
+}
+
+.pixel-cover {
+    height: 65%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated; 
+    border-bottom: 2px solid var(--accent-green);
+    transition: transform 0.4s ease; /* Smooth transition for zoom */
+}
+
+/* 🌟 CUSTOM FX: Slowly zooms in on your pixel art when hovered */
+.category-box:hover .pixel-cover {
+    transform: scale(1.08); 
+}
+
+.projects-bg { background-image: url('project-art.png'); background-color: #2a2b30; }
+.articles-bg { background-image: url('article-art.png'); background-color: #2a2b30; }
+
+.category-box h2 {
+    font-family: 'VT323', monospace;
+    font-size: 3.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin: auto;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   CONTACT PAGE: FIXED LAYOUT
+========================================= */
+/* Override old flex column so we can use CSS Grid */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* On Desktop: Left box is smaller, Right box is wider */
+@media(min-width: 850px) {
+    .contact-layout {
+        grid-template-columns: 1fr 1.3fr; 
+        align-items: start; 
+    }
+}
+
+/* Make author image smaller */
+.profile-box .profile-img {
+    width: 150px; 
+    height: 150px;
+    border-radius: 8px;
+    border: 2px solid var(--accent-green);
+    box-shadow: var(--pixel-shadow);
+    margin-bottom: 1rem;
+}
+
+/* Style the About Me text */
+.about-me-text {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+    text-align: left;
+}
+
+.about-me-text p {
+    margin-bottom: 1rem;
+}
+
+.about-me-text strong {
+    color: var(--accent-green);
+    font-size: 1.05rem;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+}
