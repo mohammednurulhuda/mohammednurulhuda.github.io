@@ -24,23 +24,30 @@
 
 <footer>
     <!-- Isometric Green Server SVG -->
-    <svg class="electrical-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
-        <defs>
-            <linearGradient id="greenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#34d399" />
-                <stop offset="100%" stop-color="#059669" />
-            </linearGradient>
-        </defs>
+    <svg class="electrical-svg" id="footer-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+    <defs>
+        <linearGradient id="greenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#34d399" />
+            <stop offset="100%" stop-color="#059669" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Dashed Line (Stays static) -->
+    <path d="M 0 120 L 1000 120" stroke="#23a559" stroke-width="2" stroke-dasharray="6 6" opacity="0.4"/>
+    
+    <!-- Cubes Group (This will animate!) -->
+    <g class="server-cubes">
+        <!-- Left Cube -->
         <path d="M 150 150 L 220 110 L 290 150 L 220 190 Z" fill="url(#greenGlow)"/>
         <path d="M 150 150 L 220 190 L 220 230 L 150 190 Z" fill="#047857"/>
         <path d="M 290 150 L 220 190 L 220 230 L 290 190 Z" fill="#064e3b"/>
         
+        <!-- Right Cube -->
         <path d="M 710 110 L 800 60 L 890 110 L 800 160 Z" fill="url(#greenGlow)"/>
         <path d="M 710 110 L 800 160 L 800 230 L 710 180 Z" fill="#047857"/>
         <path d="M 890 110 L 800 160 L 800 230 L 890 180 Z" fill="#064e3b"/>
-        
-        <path d="M 0 120 L 1000 120" stroke="#23a559" stroke-width="2" stroke-dasharray="6 6" opacity="0.4"/>
-    </svg>
+    </g>
+</svg>
     <div class="footer-text">© 2026 MOHAMMED NURUL HUDA &bull; BUILT WITH PIXEL PRECISION</div>
 </footer>
 

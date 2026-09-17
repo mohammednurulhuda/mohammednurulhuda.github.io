@@ -145,3 +145,25 @@ function loadArticles() {
 
 // Initial navigation load
 navigate('home');
+
+// 6. Scroll Animation for Footer Cubes
+document.addEventListener("DOMContentLoaded", () => {
+    const svg = document.getElementById('footer-svg');
+    const footer = document.querySelector('footer');
+    
+    if (!svg || !footer) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // When you scroll down and see the footer
+                svg.classList.add('pop-up');
+            } else {
+                // When you scroll away, reset them so they can pop up again
+                svg.classList.remove('pop-up');
+            }
+        });
+    }, { threshold: 0.1 }); // Triggers when at least 10% of the footer is visible
+
+    observer.observe(footer);
+});
