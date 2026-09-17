@@ -12,14 +12,22 @@ collections:
   - name: "content"
     label: "Website Content"
     files:
+      # --- YOUR EXISTING ARTICLES SECTION ---
       - label: "My Articles"
-        name: "articles_data"
-        file: "data.json" # The CMS will save everything here!
+        name: "articles"
+        file: "data.json"
         fields:
-          - label: "List of Articles"
+          # ... (your existing article fields stay here) ...
+      
+      # --- ADD THIS NEW PROJECTS SECTION ---
+      - label: "My Projects"
+        name: "projects"
+        file: "projects.json"
+        fields:
+          - label: "Project List"
             name: "items"
             widget: "list"
             fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Content", name: "text", widget: "text"}
-              - {label: "Image URL", name: "media", widget: "image", required: false}
+              - {label: "Project Title", name: "title", widget: "string"}
+              - {label: "Cover Image", name: "media", widget: "image", required: false}
+              - {label: "Project Details", name: "text", widget: "markdown"}

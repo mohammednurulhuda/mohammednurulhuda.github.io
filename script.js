@@ -1,5 +1,6 @@
 // Global state for items fetched from CMS
 let articlesData = [];
+let projectsData = [];
 
 // 1. Theme Management
 let isDarkMode = true;
@@ -59,12 +60,8 @@ const views = {
     projects: `
         <div class="projects-container">
             <button class="pixel-btn" style="margin-bottom: 2rem;" onclick="navigate('works')">◄ BACK TO CATEGORIES</button>
-            <h1 class="pixel-title">PROJECTS</h1>
-            <div class="contact-card" style="margin-top: 2rem;">
-                <p style="color: var(--text-soft); font-family: 'IBM Plex Mono', monospace;">
-                    [ SYSTEM MESSAGE: PROJECTS DATABASE INITIALIZING... CHECK BACK LATER. ]
-                </p>
-            </div>
+            <h1 class="pixel-title" style="margin-bottom: 1rem;">PROJECTS</h1>
+            <div id="projects-grid" class="grid"></div>
         </div>
     `,
     contact: `
@@ -72,7 +69,6 @@ const views = {
             <h1 class="pixel-title">CONTACT ME</h1>
             
             <div class="contact-layout">
-                <!-- NOW ON THE LEFT: About Me & Profile -->
                 <div class="contact-card profile-box left-box">
                     <img src="Author.jpg" alt="Mohammed Nurul Huda" class="profile-img">
                     <h2 style="font-size: 1.8rem; margin-bottom: 0.2rem; color: #fff;">Mohammed Nurul Huda</h2>
@@ -84,7 +80,6 @@ const views = {
                     </div>
                 </div>
 
-                <!-- NOW ON THE RIGHT: Contact Links & Updated Email -->
                 <div class="contact-card right-box">
                     <p style="font-family: 'IBM Plex Mono', monospace; color: var(--text-soft); margin-bottom: 1.5rem; line-height: 1.6;">
                         Got a question about a physics article or want to collaborate? Reach out via Discord or Facebook below:
@@ -123,6 +118,8 @@ function navigate(pageId) {
     
     if (pageId === 'articles') {
         loadArticles();
+    } else if (pageId === 'projects') {
+        loadProjects();
     }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -147,7 +144,26 @@ function openArticleByIndex(index) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 5. Fetch CMS Data & Render Grid
+// 5. Safe Project Opener
+function openProjectByIndex(index) {
+    const item = projectsData[index];
+    if (!item) return;
+
+    const imageUrl = item.media ? item.media : 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop';
+    const app = document.getElementById('app');
+
+    app.innerHTML = `
+        <button class="pixel-btn" style="margin-bottom: 2rem;" onclick="navigate('projects')">◄ BACK TO PROJECTS</button>
+        <h1 class="pixel-title" style="font-size:2.8rem; margin-bottom: 1rem;">${item.title}</h1>
+        <div class="contact-card" style="margin-top:1rem;">
+            ${item.media ? `<img src="${imageUrl}" style="width:100%; max-height:400px; object-fit:cover; border-radius:6px; border:2px solid #000;">` : ''}
+            <div style="font-size:1.1rem; line-height:1.8; white-space:pre-wrap; color:var(--text);">${item.text}</div>
+        </div>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 6. Fetch CMS Data & Render Grids
 function loadArticles() {
     fetch('data.json')
         .then(response => response.json())
@@ -185,10 +201,47 @@ function loadArticles() {
         });
 }
 
+function loadProjects() {
+    fetch('projects.json')
+        .then(response => response.json())
+        .then(data => {
+            projectsData = data.items || [];
+            const grid = document.getElementById('projects-grid');
+            
+            if (projectsData.length > 0 && grid) {
+                grid.innerHTML = projectsData.map((item, index) => {
+                    const imageUrl = item.media ? item.media : 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop';
+                    return `
+                    <div class="forum-card" onclick="openProjectByIndex(${index})">
+                        <div class="card-meta-top">MOHAMMED NURUL HUDA &bull; PROJECT</div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <div class="card-image-wrapper">
+                            <img src="${imageUrl}" alt="${item.title}">
+                        </div>
+                        <div class="card-footer">
+                            <span>VIEW PROJECT ➔</span>
+                            <span>⚙️</span>
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+            } else if (grid) {
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">No projects published yet.</p>';
+            }
+        })
+        .catch(err => {
+            console.log("CMS Data Fetch Error:", err);
+            const grid = document.getElementById('projects-grid');
+            if (grid) {
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">No projects found. Add one via the Admin panel!</p>';
+            }
+        });
+}
+
 // Initial navigation load
 navigate('home');
 
-// 6. Scroll Animation for Footer Cubes
+// 7. Scroll Animation for Footer Cubes
 document.addEventListener("DOMContentLoaded", () => {
     const svg = document.getElementById('footer-svg');
     const footer = document.querySelector('footer');
