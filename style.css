@@ -23,7 +23,11 @@
   --pixel-shadow: 4px 4px 0px #b5bac1;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
 body {
   background-color: var(--bg-dark);
@@ -35,10 +39,12 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   transition: background-image 0.4s ease-in-out;
 }
 
-/* Page-Specific Backgrounds with Dark Tint */
+/* Page-Specific Backgrounds */
 body.bg-home {
   background-image: linear-gradient(rgba(15, 16, 21, 0.75), rgba(15, 16, 21, 0.75)), url('BG.jpeg');
 }
@@ -48,100 +54,115 @@ body.bg-works {
 }
 
 body.bg-contact {
-  /* Changed url from 'BG2.jpeg' to 'BG2.jpg' */
   background-image: linear-gradient(rgba(15, 16, 21, 0.75), rgba(15, 16, 21, 0.75)), url('BG2.jpg');
-}
-
-/* Home Screen Readability Enhancements */
-.pixel-title {
-  font-family: 'VT323', monospace;
-  font-size: 4rem;
-  line-height: 1;
-  letter-spacing: 2px;
-  color: #ffffff;
-  text-shadow: 3px 3px 0px #000000, 0 0 12px rgba(0, 0, 0, 0.9);
-}
-
-.pixel-subtitle {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1.2rem;
-  color: #ffffff;
-  background: rgba(15, 16, 21, 0.85);
-  backdrop-filter: blur(6px);
-  padding: 1.2rem 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid var(--accent-green);
-  max-width: 650px;
-  line-height: 1.6;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 a { text-decoration: none; color: inherit; }
 
-/* HEADER */
+/* HEADER & NAVIGATION */
 .top-bar {
   position: sticky; top: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 2.5rem; background: rgba(15, 16, 21, 0.92);
+  padding: 1rem 1.5rem; background: rgba(15, 16, 21, 0.92);
   backdrop-filter: blur(8px); border-bottom: 3px solid var(--accent-green);
+  gap: 1rem;
 }
 .wordmark {
-  font-weight: 700; font-size: 1.2rem; font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700; font-size: 1.1rem; font-family: 'IBM Plex Mono', monospace;
   color: var(--accent-green); text-shadow: 2px 2px 0px #000;
+  white-space: nowrap;
 }
-.nav-tabs { display: flex; gap: 1.5rem; align-items: center; }
+.nav-tabs { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
 .nav-tabs a {
   font-family: 'IBM Plex Mono', monospace; font-weight: 600;
-  color: var(--text-soft); transition: all 0.2s;
+  color: var(--text-soft); transition: all 0.2s; font-size: 0.9rem;
 }
 .nav-tabs a:hover { color: var(--accent-green); text-shadow: 0 0 8px rgba(35,165,89,0.5); }
 
 /* PIXEL BUTTON */
 .pixel-btn, .theme-btn {
   background: var(--surface); color: var(--text);
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.95rem; font-weight: 700;
-  padding: 10px 20px; border: var(--pixel-border);
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; font-weight: 700;
+  padding: 8px 16px; border: var(--pixel-border);
   box-shadow: var(--pixel-shadow); cursor: pointer; text-transform: uppercase;
   transition: transform 0.1s, box-shadow 0.1s; display: inline-flex; align-items: center; gap: 8px;
 }
 .pixel-btn:hover, .theme-btn:hover { background: var(--surface-hover); transform: translate(-2px, -2px); }
 .pixel-btn:active, .theme-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }
 
-/* LAYOUT & SCROLLING HERO */
-main { flex: 1; max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; width: 100%; z-index: 10; }
+/* MAIN CONTENT CONTAINER */
+main { 
+  flex: 1; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 2rem 1rem; 
+  width: 100%; 
+  z-index: 10; 
+}
 
-/* Home page height forces scrolling down to expose the bottom server graphic */
-.home-container {
-  min-height: 110vh; display: flex; flex-direction: column; justify-content: flex-start;
-  padding-top: 4rem; gap: 2rem;
-}
+/* TYPOGRAPHY */
 .pixel-title {
-  font-family: 'VT323', monospace; font-size: 4rem; line-height: 1;
-  letter-spacing: 2px; color: var(--text); text-shadow: 3px 3px 0px var(--accent-green);
+  font-family: 'VT323', monospace; 
+  font-size: clamp(2.5rem, 7vw, 4rem); 
+  line-height: 1.1;
+  letter-spacing: 2px; 
+  color: #ffffff; 
+  text-shadow: 3px 3px 0px #000000, 0 0 12px rgba(0, 0, 0, 0.9);
 }
+
 .pixel-subtitle {
-  font-family: 'IBM Plex Mono', monospace; font-size: 1.2rem; color: var(--text-soft);
-  max-width: 650px; line-height: 1.6; border-left: 4px solid var(--accent-green); padding-left: 1rem;
+  font-family: 'IBM Plex Mono', monospace; 
+  font-size: clamp(0.95rem, 3.5vw, 1.2rem); 
+  color: #ffffff;
+  background: rgba(15, 16, 21, 0.85); 
+  backdrop-filter: blur(6px);
+  padding: 1rem 1.25rem; 
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-green); 
+  max-width: 650px; 
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
+
+/* LAYOUT & SCROLLING HERO */
+.home-container {
+  min-height: calc(100vh - 160px); 
+  display: flex; flex-direction: column; justify-content: flex-start;
+  padding-top: 2rem; gap: 1.5rem;
+}
+
 .scroll-indicator {
-  margin-top: auto; padding-bottom: 6rem; font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.9rem; color: var(--accent-green); animation: bounce 1.5s infinite;
+  margin-top: auto; padding-bottom: 2rem; font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem; color: var(--accent-green); animation: bounce 1.5s infinite;
 }
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+  50% { transform: translateY(8px); }
 }
 
-/* FORUM / ARTICLE CARDS */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.8rem; margin-top: 2rem; }
+/* PAGE WRAPPERS */
+.works-container, .contact-container, .articles-container, .projects-container {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* CARDS & GRIDS */
+.grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); 
+  gap: 1.5rem; 
+  margin-top: 2rem; 
+}
+
 .forum-card {
   background: var(--surface); border: var(--pixel-border); box-shadow: var(--pixel-shadow);
-  border-radius: 6px; padding: 18px; display: flex; flex-direction: column; gap: 12px;
+  border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 12px;
   cursor: pointer; transition: transform 0.15s;
 }
 .forum-card:hover { transform: translateY(-4px); background: var(--surface-hover); }
 .card-meta-top { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--text-soft); }
-.card-title { font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
+.card-title { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
 .card-image-wrapper {
   width: 100%; height: 170px; border-radius: 4px; overflow: hidden;
   background: #000; border: 2px solid #000; position: relative;
@@ -153,210 +174,124 @@ main { flex: 1; max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; width: 
   margin-top: auto; padding-top: 8px; border-top: 1px dashed var(--border);
 }
 
-/* CONTACT PAGE (PRO LAYOUT) */
-.contact-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-@media(min-width: 768px) { .contact-container { grid-template-columns: 1.2fr 0.8fr; align-items: start; } }
-
-.contact-card {
-  background: var(--surface); border: var(--pixel-border); box-shadow: var(--pixel-shadow);
-  padding: 2rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1.5rem;
+/* WORKS CATEGORY CARDS */
+.category-grid {
+  display: flex; gap: 2rem; justify-content: center;
+  margin-top: 2rem; flex-wrap: wrap;
 }
-.social-links { display: flex; flex-direction: column; gap: 1rem; }
+
+.category-box {
+  width: 100%; max-width: 320px; height: 420px;
+  background-color: var(--surface); border: 2px solid var(--accent-green);
+  border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;
+  cursor: pointer; box-shadow: var(--pixel-shadow);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.category-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(35, 165, 89, 0.35), 0 0 20px rgba(35, 165, 89, 0.2) inset;
+  border-color: #34d399;
+}
+
+.pixel-cover {
+  height: 65%; width: 100%; background-size: cover; background-position: center;
+  image-rendering: pixelated; border-bottom: 2px solid var(--accent-green);
+  transition: transform 0.4s ease;
+}
+
+.category-box:hover .pixel-cover { transform: scale(1.08); }
+.projects-bg { background-image: url('project-art.png'); background-color: #2a2b30; }
+.articles-bg { background-image: url('article-art.png'); background-color: #2a2b30; }
+
+.category-box h2 {
+  font-family: 'VT323', monospace; font-size: 3rem; color: #ffffff;
+  text-align: center; margin: auto; letter-spacing: 2px;
+}
+
+/* CONTACT PAGE */
+.contact-layout {
+  display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem;
+}
+
+@media(min-width: 768px) {
+  .contact-layout { grid-template-columns: 1fr 1.3fr; align-items: start; }
+}
+
+.contact-card, .profile-box {
+  background: var(--surface); border: var(--pixel-border); box-shadow: var(--pixel-shadow);
+  padding: 1.5rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1.25rem;
+}
+
+.profile-box { text-align: center; align-items: center; }
+.profile-box .profile-img {
+  width: 140px; height: 140px; border-radius: 8px;
+  border: 2px solid var(--accent-green); box-shadow: var(--pixel-shadow);
+  object-fit: cover; margin-bottom: 0.5rem;
+}
+
+.about-me-text {
+  margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border);
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;
+  color: var(--text); line-height: 1.6; text-align: left;
+}
+.about-me-text p { margin-bottom: 0.75rem; }
+.about-me-text strong { color: var(--accent-green); font-size: 1rem; }
+
+.social-links { display: flex; flex-direction: column; gap: 0.85rem; }
 .social-btn {
-  display: flex; align-items: center; gap: 14px; padding: 14px 20px;
+  display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px;
   border: var(--pixel-border); box-shadow: var(--pixel-shadow);
-  font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: #fff;
-  transition: transform 0.1s, filter 0.2s;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: #fff;
+  transition: transform 0.1s, filter 0.2s; text-align: center;
 }
 .social-btn:hover { transform: translate(-2px, -2px); filter: brightness(1.1); }
 .social-btn.discord { background: var(--accent-blue); }
 .social-btn.facebook { background: var(--accent-fb); }
 
-.profile-box {
-  background: var(--surface); border: var(--pixel-border); box-shadow: var(--pixel-shadow);
-  padding: 1.5rem; border-radius: 8px; text-align: center;
-}
-.profile-img {
-  width: 100%; max-width: 260px; aspect-ratio: 1/1; border-radius: 6px;
-  border: 3px solid #000; object-fit: cover; margin-bottom: 1rem;
-}
-
 /* FOOTER */
 footer {
-  position: relative; width: 100%; height: 220px; background: #0a0b0e;
+  position: relative; width: 100%; height: 180px; background: #0a0b0e;
   border-top: 3px solid var(--accent-green); overflow: hidden;
-  display: flex; justify-content: center; align-items: flex-end; padding-bottom: 24px;
+  display: flex; justify-content: center; align-items: flex-end; padding-bottom: 16px;
 }
 .footer-text {
   position: relative; z-index: 2; color: var(--text-soft);
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-align: center;
+  padding: 0 1rem;
 }
 .electrical-svg { position: absolute; bottom: 0; width: 100%; height: 100%; opacity: 0.85; pointer-events: none; }
 
-/* SVG Cube Animation */
 .server-cubes {
-  transform: translateY(150px); /* Hides them below the screen */
-  /* This cubic-bezier creates a bouncy, spring-like motion */
-  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); 
+  transform: translateY(150px);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+.electrical-svg.pop-up .server-cubes { transform: translateY(0); }
 
-/* When Javascript adds the 'pop-up' class, move them back to 0 */
-.electrical-svg.pop-up .server-cubes {
-  transform: translateY(0); 
-}
+/* RESPONSIVE BREAKPOINTS */
+@media screen and (max-width: 600px) {
+  body {
+    background-attachment: scroll !important;
+    background-position: center top !important;
+  }
 
-/* =========================================
-   FIXED PAGE HEIGHTS
-   Ensures all pages are long enough to reveal 
-   the footer properly on scroll
-========================================= */
-.works-container, .contact-container, .articles-container, .projects-container {
-    min-height: 110vh;
-    display: flex;
+  .top-bar {
     flex-direction: column;
-}
+    align-items: stretch;
+    padding: 0.85rem 1rem;
+  }
 
-/* =========================================
-   WORKS PAGE: CATEGORY LAYOUT
-========================================= */
-.category-grid {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    margin-top: 3rem;
-    flex-wrap: wrap; 
-}
-
-.category-box {
-    width: 320px;
-    height: 480px;
-    background-color: var(--surface);
-    border: 2px solid var(--accent-green);
-    border-radius: 8px;
-    overflow: hidden; /* Important for the zoom effect to stay inside the box */
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    box-shadow: var(--pixel-shadow);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-/* 🌟 CUSTOM FX: Hover Glow and Scale up */
-.category-box:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(35, 165, 89, 0.35), 0 0 20px rgba(35, 165, 89, 0.2) inset;
-    border-color: #34d399; /* Brightens the green border */
-}
-
-.pixel-cover {
-    height: 65%;
+  .nav-tabs {
+    justify-content: space-between;
     width: 100%;
-    background-size: cover;
-    background-position: center;
-    image-rendering: pixelated; 
-    border-bottom: 2px solid var(--accent-green);
-    transition: transform 0.4s ease; /* Smooth transition for zoom */
-}
+  }
 
-/* 🌟 CUSTOM FX: Slowly zooms in on your pixel art when hovered */
-.category-box:hover .pixel-cover {
-    transform: scale(1.08); 
-}
+  .home-container, .works-container, .contact-container, .articles-container, .projects-container {
+    min-height: auto;
+  }
 
-.projects-bg { background-image: url('project-art.png'); background-color: #2a2b30; }
-.articles-bg { background-image: url('article-art.png'); background-color: #2a2b30; }
-
-.category-box h2 {
-    font-family: 'VT323', monospace;
-    font-size: 3.5rem;
-    color: #ffffff;
-    text-align: center;
-    margin: auto;
-    letter-spacing: 2px;
-}
-
-/* =========================================
-   CONTACT PAGE: FIXED LAYOUT
-========================================= */
-/* Override old flex column so we can use CSS Grid */
-.contact-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 1rem;
-}
-
-/* On Desktop: Left box is smaller, Right box is wider */
-@media(min-width: 850px) {
-    .contact-layout {
-        grid-template-columns: 1fr 1.3fr; 
-        align-items: start; 
-    }
-}
-
-/* Make author image smaller */
-.profile-box .profile-img {
-    width: 150px; 
-    height: 150px;
-    border-radius: 8px;
-    border: 2px solid var(--accent-green);
-    box-shadow: var(--pixel-shadow);
-    margin-bottom: 1rem;
-}
-
-/* Style the About Me text */
-.about-me-text {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px dashed var(--border);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.7;
-    text-align: left;
-}
-
-.about-me-text p {
-    margin-bottom: 1rem;
-}
-
-.about-me-text strong {
-    color: var(--accent-green);
-    font-size: 1.05rem;
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
-}
-
-/* --- MOBILE LAYOUT FIXES --- */
-@media screen and (max-width: 768px) {
-    body {
-        /* Prevents the background from zooming in massively on phones */
-        background-attachment: scroll !important; 
-        background-position: center top !important;
-    }
-
-    .home-container {
-        /* Removes the giant empty space */
-        min-height: 75vh !important; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem 1rem !important;
-    }
-
-    .pixel-title {
-        font-size: 2.2rem !important; /* Scales down massive text */
-    }
-
-    .scroll-indicator {
-        /* Pulls the bottom text up closer to the button */
-        margin-top: 3rem !important;
-        position: relative !important;
-        bottom: auto !important;
-    }
+  .scroll-indicator {
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+  }
 }
