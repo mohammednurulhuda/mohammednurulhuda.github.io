@@ -67,7 +67,12 @@ const views = {
             
             <div class="contact-layout">
                 <div class="contact-card profile-box left-box">
-                    <img src="Author.jpg" alt="Mohammed Nurul Huda" class="profile-img">
+                    
+                    <div class="profile-img-wrapper">
+                        <img src="Author.jpg" alt="Mohammed Nurul Huda" class="profile-img">
+                        <img src="Frame.png" alt="Profile Frame" class="profile-frame">
+                    </div>
+                    
                     <h2 style="font-size: 1.8rem; margin-bottom: 0.2rem; color: var(--text);">Mohammed Nurul Huda</h2>
                     <p style="color: var(--text-soft); font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;">Physics Enthusiast & Developer</p>
                     
