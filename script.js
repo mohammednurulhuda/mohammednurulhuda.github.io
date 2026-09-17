@@ -86,12 +86,12 @@ const views = {
                     </p>
                     
                     <div class="social-links">
-                        <button class="social-btn discord">
+                        <a href="https://discord.gg/BNb8aCbydF" target="_blank" rel="noopener noreferrer" class="social-btn discord">
                             <i class="fab fa-discord"></i> JOIN DISCORD SERVER
-                        </button>
-                        <button class="social-btn facebook">
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61594246478161" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
                             <i class="fab fa-facebook"></i> CONNECT ON FACEBOOK
-                        </button>
+                        </a>
                     </div>
                     
                     <div style="font-family: 'IBM Plex Mono', monospace; margin-top: 2rem; color: var(--accent-green); border-top: 1px dashed var(--border); padding-top: 1rem;">
