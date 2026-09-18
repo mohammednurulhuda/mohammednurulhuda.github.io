@@ -1,9 +1,9 @@
 {
   "items": [
     {
-      "media": "images/img_20260626_225803.jpg",
+      "media": "images/Hackpad.jpg",
       "title": "Custom miniature keyboard we're calling it \"Hackpad\"",
-      "text": "The image you're looking at is my very first project!\\\nIt was built on purpose to use as a dedicated *Esc, Ctrl+c, Ctrl+v* and *Enter* but I later \\\nreprogrammed it to work as a stopwatch.\n\nThe Built files are opensource at : https://github.com/mohammednurulhuda/X1-hackpad-\n\nHonestly electronics is the thing I love!!!"
+      "text": "The image you're looking at is my very first project!<br><br>It was built on purpose to use as a dedicated <i>Esc, Ctrl+c, Ctrl+v</i> and <i>Enter</i> but I later reprogrammed it to work as a stopwatch.<br><br>The Built files are opensource at : https://github.com/mohammednurulhuda/X1-hackpad-<br><br><img src=\"images/hackpad-pcb.png\" alt=\"Hackpad PCB\" style=\"width: 100%; border-radius: 8px; margin: 15px 0;\"><br><br>The PCB is designed in KiCAD.<br>A 3D printer was used to create the case for the Hackpad, which gives it a sleek and compact design.<br>This project was a great learning experience.<br><br>Honestly electronics is the thing I love!!!"
     }
   ]
 }
