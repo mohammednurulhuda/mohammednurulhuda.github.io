@@ -74,7 +74,7 @@ const views = {
                     </div>
                     
                     <h2 style="font-size: 1.8rem; margin-bottom: 0.2rem; color: var(--text);">Mohammed Nurul Huda</h2>
-                    <p style="color: var(--text-soft); font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;">Physics Enthusiast & Developer</p>
+                    <p style="color: var(--text-soft); font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;">Hardware Builder & Physics Enthusiast</p>
                     
                     <div class="about-me-text">
                         <p><strong>Welcome! I'm Mohammed Nurul Huda.</strong></p>

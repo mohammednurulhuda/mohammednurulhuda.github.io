@@ -63,14 +63,74 @@ a { text-decoration: none; color: inherit; }
 .top-bar {
   position: sticky; top: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 1.5rem; background: rgba(15, 16, 21, 0.92);
+  padding: 1rem 1.5rem; background: rgba(53, 53, 53, 0.92);
   backdrop-filter: blur(8px); border-bottom: 3px solid var(--accent-green);
   gap: 1rem;
 }
+/* --- ANIMATED WORDMARK --- */
 .wordmark {
-  font-weight: 700; font-size: 1.1rem; font-family: 'IBM Plex Mono', monospace;
-  color: var(--accent-green); text-shadow: 2px 2px 0px #000;
+  font-weight: 700; 
+  font-size: 1.1rem; 
+  font-family: 'IBM Plex Mono', monospace;
+  text-shadow: 2px 2px 0px #ffffff00;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 1. Terminal Arrow & Underscore Animation */
+.cmd-prompt {
+  color: var(--accent-green);
+  display: inline-flex;
+  align-items: center;
+}
+
+.cmd-prompt::after {
+  content: '_';
+  display: inline-block;
+  width: 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  color: #9cff3e;
+  overflow: hidden;
+}
+
+.wordmark:hover .cmd-prompt::after {
+  width: 14px;
+  opacity: 1;
+  transform: translateX(4px); /* Smoothly slides out from behind the arrow */
+  text-shadow: 0 0 8px rgb(5, 5, 5);
+}
+
+/* 2. Letter-by-Letter Glowing Text Wave */
+.cmd-text {
+  color: var(--accent-green);
+  margin-left: 6px;
+  transition: color 0.3s ease;
+}
+
+.wordmark:hover .cmd-text {
+  /* Creates a sweeping white light over the green text */
+  background: linear-gradient(
+    90deg, 
+    var(--accent-green) 0%, 
+    var(--accent-green) 40%, 
+    #4aff4a 50%, /* The bright glow point */
+    var(--accent-green) 60%, 
+    var(--accent-green) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textGlowWave 1.8s linear infinite;
+}
+
+@keyframes textGlowWave {
+  from { background-position: 100% center; } /* Starts at the 'm' */
+  to { background-position: -100% center; }  /* Sweeps past the 'o' */
 }
 .nav-tabs { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
 .nav-tabs a {
