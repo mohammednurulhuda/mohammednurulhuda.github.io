@@ -99,6 +99,18 @@ const views = {
                     <div style="font-family: 'IBM Plex Mono', monospace; margin-top: 2rem; color: var(--accent-green); border-top: 1px dashed var(--border); padding-top: 1rem;">
                         ⮑ Direct Email: mohammednurulhuda2010@gmail.com
                     </div>
+
+                    <!-- NEW CUSTOM NEWSLETTER BOX -->
+                    <div class="newsletter-box" style="margin-top: 2rem; padding: 1.25rem; border: 2px dashed var(--accent-green); border-radius: 8px; background: var(--surface-hover);">
+                        <h3 style="font-family: 'VT323', monospace; font-size: 1.8rem; margin-bottom: 0.25rem; color: var(--accent-green);">SUBSCRIBE</h3>
+                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-soft); margin-bottom: 1rem; line-height: 1.4;">
+                            register your email to get notified when new article arrives!!
+                        </p>
+                        <form action="https://bb75c4fe.sibforms.com/serve/MUIFAL62nkttAkI_5jlOqsMh6jOgjh6DthkPB7Son6FeIeZsW5Ir7sJstFxwZjI_LLn-ZcucqkFJ2IJdfzBU7nyihwRztEUP7Zs952B-IoPJw1FEgTsU_MVm4aATac8hd-7NQss4TXO-rVJ5Rr-GACP3Fqr_ZCEL9gT4wtZlLUXIxn7kvJLNpu-rW5MmxL9leWhX_HGmr5Ro9dRaZw==" method="POST" target="_blank" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <input type="email" name="EMAIL" placeholder="Enter your email..." required style="flex: 1; min-width: 160px; padding: 10px; background: var(--bg-dark); border: 1px solid var(--border); color: var(--text); font-family: 'IBM Plex Mono', monospace; border-radius: 4px;">
+                            <button type="submit" class="pixel-btn">REGISTER ➔</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
