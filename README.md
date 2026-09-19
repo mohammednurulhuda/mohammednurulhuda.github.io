@@ -1,3 +1,3 @@
 Hi!
 
-This is a website where I publish my Works!
+It's a website where I publish my Works!
