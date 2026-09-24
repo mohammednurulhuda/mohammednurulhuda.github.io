@@ -67,7 +67,7 @@ a { text-decoration: none; color: inherit; }
   backdrop-filter: blur(8px); border-bottom: 3px solid var(--accent-green);
   gap: 1rem;
 }
-/* --- ANIMATED WORDMARK --- */
+
 .wordmark {
   font-weight: 700; 
   font-size: 1.1rem; 
@@ -79,7 +79,6 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
 }
 
-/* 1. Terminal Arrow & Underscore Animation */
 .cmd-prompt {
   color: var(--accent-green);
   display: inline-flex;
@@ -100,11 +99,10 @@ a { text-decoration: none; color: inherit; }
 .wordmark:hover .cmd-prompt::after {
   width: 14px;
   opacity: 1;
-  transform: translateX(4px); /* Smoothly slides out from behind the arrow */
+  transform: translateX(4px);
   text-shadow: 0 0 8px rgb(5, 5, 5);
 }
 
-/* 2. Letter-by-Letter Glowing Text Wave */
 .cmd-text {
   color: var(--accent-green);
   margin-left: 6px;
@@ -112,12 +110,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 .wordmark:hover .cmd-text {
-  /* Creates a sweeping white light over the green text */
   background: linear-gradient(
     90deg, 
     var(--accent-green) 0%, 
     var(--accent-green) 40%, 
-    #4aff4a 50%, /* The bright glow point */
+    #4aff4a 50%, 
     var(--accent-green) 60%, 
     var(--accent-green) 100%
   );
@@ -129,9 +126,10 @@ a { text-decoration: none; color: inherit; }
 }
 
 @keyframes textGlowWave {
-  from { background-position: 100% center; } /* Starts at the 'm' */
-  to { background-position: -100% center; }  /* Sweeps past the 'o' */
+  from { background-position: 100% center; }
+  to { background-position: -100% center; }
 }
+
 .nav-tabs { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
 .nav-tabs a {
   font-family: 'IBM Plex Mono', monospace; font-weight: 600;
@@ -160,7 +158,7 @@ main {
   z-index: 10; 
 }
 
-/* HIGH-CONTRAST GLOBAL TITLES FIX */
+/* HIGH-CONTRAST GLOBAL TITLES */
 .pixel-title {
   font-family: 'VT323', monospace; 
   font-size: clamp(2.5rem, 7vw, 4rem); 
@@ -269,21 +267,38 @@ main {
   text-align: center; margin: auto; letter-spacing: 2px;
 }
 
-/* CONTACT PAGE */
+/* CONTACT PAGE LAYOUT FIX (NO OVERLAP) */
 .contact-layout {
-  display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  width: 100%;
+  align-items: stretch;
 }
 
-@media(min-width: 768px) {
-  .contact-layout { grid-template-columns: 1fr 1.3fr; align-items: start; }
+.left-box, .right-box {
+  flex: 1 1 340px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .contact-card, .profile-box {
-  background: var(--surface); border: var(--pixel-border); box-shadow: var(--pixel-shadow);
-  padding: 1.5rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1.25rem;
+  background: var(--surface);
+  border: var(--pixel-border);
+  box-shadow: var(--pixel-shadow);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-/* PROFILE IMAGE & TV FRAME WRAPPER */
+/* PROFILE IMAGE & RETRO TV FRAME FIX */
 .profile-box { 
   text-align: center; 
   align-items: center; 
@@ -308,12 +323,13 @@ main {
   filter: drop-shadow(var(--pixel-shadow));
 }
 
+/* Adjusted percentages to completely fill the CRT screen cutout without gaps */
 .profile-box .profile-img {
   position: absolute;
-  top: 13%; 
+  top: 12%; 
   left: 4.5%; 
-  width: 63%; 
-  height: 73%; 
+  width: 71.5%; 
+  height: 74%; 
   border-radius: 12px;
   object-fit: cover;
   z-index: 1;
@@ -324,7 +340,7 @@ main {
   font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;
   color: var(--text); line-height: 1.6; text-align: left;
 }
-.about-me-text p { margin-bottom: 0.75rem; }
+.about-me-text p { margin-bottom: 0.8rem; }
 .about-me-text strong { color: var(--accent-green); font-size: 1rem; }
 
 .social-links { display: flex; flex-direction: column; gap: 0.85rem; }
@@ -337,6 +353,17 @@ main {
 .social-btn:hover { transform: translate(-2px, -2px); filter: brightness(1.1); }
 .social-btn.discord { background: var(--accent-blue); }
 .social-btn.facebook { background: var(--accent-fb); }
+
+.newsletter-box {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 2px dashed var(--accent-green);
+  border-radius: 8px;
+  background: var(--surface-hover);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
 /* MARKDOWN DISPLAY STYLES */
 .markdown-body img {
@@ -366,7 +393,6 @@ footer {
 }
 .electrical-svg.pop-up .server-cubes { transform: translateY(0); }
 
-/* SKY CANVAS CONTAINER */
 canvas.airplane-container {
   position: absolute;
   top: 0;
@@ -378,7 +404,7 @@ canvas.airplane-container {
 }
 
 /* RESPONSIVE BREAKPOINTS */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   body {
     background-attachment: scroll !important;
     background-position: center top !important;
@@ -388,11 +414,16 @@ canvas.airplane-container {
     flex-direction: column;
     align-items: stretch;
     padding: 0.85rem 1rem;
+    gap: 0.75rem;
   }
 
   .nav-tabs {
     justify-content: space-between;
     width: 100%;
+  }
+
+  .contact-layout {
+    flex-direction: column;
   }
 
   .home-container, .works-container, .contact-container, .articles-container, .projects-container {

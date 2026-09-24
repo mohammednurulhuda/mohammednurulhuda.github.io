@@ -80,6 +80,10 @@ const views = {
                         <p><strong>Welcome! I'm Mohammed Nurul Huda.</strong></p>
                         <p>I created this space to document my projects. I am passionate about building things from the ground up—from coding and working with microcontrollers to deep-diving into custom electronics. I believe in staying solid, loyal to my goals, and letting my builds speak for themselves. Take a look around to see my latest work!</p>
                     </div>
+
+                    <div style="margin-top: 1.5rem; width: 100%;">
+                        <button class="pixel-btn" style="width: 100%; text-align: center; justify-content: center;" onclick="navigate('bio')">More about me ➔</button>
+                    </div>
                 </div>
 
                 <div class="contact-card right-box">
@@ -96,21 +100,44 @@ const views = {
                         </a>
                     </div>
                     
-                    <div style="font-family: 'IBM Plex Mono', monospace; margin-top: 2rem; color: var(--accent-green); border-top: 1px dashed var(--border); padding-top: 1rem;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; margin-top: 2rem; color: var(--accent-green); border-top: 1px dashed var(--border); padding-top: 1rem; word-break: break-all;">
                         ⮑ Direct Email: mohammednurulhuda2010@gmail.com
                     </div>
 
-                    <!-- NEW CUSTOM NEWSLETTER BOX -->
-                    <div class="newsletter-box" style="margin-top: 2rem; padding: 1.25rem; border: 2px dashed var(--accent-green); border-radius: 8px; background: var(--surface-hover);">
+                    <div class="newsletter-box">
                         <h3 style="font-family: 'VT323', monospace; font-size: 1.8rem; margin-bottom: 0.25rem; color: var(--accent-green);">SUBSCRIBE</h3>
                         <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-soft); margin-bottom: 1rem; line-height: 1.4;">
                             register your email to get notified when new article arrives!!
                         </p>
-                        <form action="https://bb75c4fe.sibforms.com/serve/MUIFAL62nkttAkI_5jlOqsMh6jOgjh6DthkPB7Son6FeIeZsW5Ir7sJstFxwZjI_LLn-ZcucqkFJ2IJdfzBU7nyihwRztEUP7Zs952B-IoPJw1FEgTsU_MVm4aATac8hd-7NQss4TXO-rVJ5Rr-GACP3Fqr_ZCEL9gT4wtZlLUXIxn7kvJLNpu-rW5MmxL9leWhX_HGmr5Ro9dRaZw==" method="POST" target="_blank" style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <input type="email" name="EMAIL" placeholder="Enter your email..." required style="flex: 1; min-width: 160px; padding: 10px; background: var(--bg-dark); border: 1px solid var(--border); color: var(--text); font-family: 'IBM Plex Mono', monospace; border-radius: 4px;">
-                            <button type="submit" class="pixel-btn">REGISTER ➔</button>
+                        <form action="https://bb75c4fe.sibforms.com/serve/MUIFAL62nkttAkI_5jlOqsMh6jOgjh6DthkPB7Son6FeIeZsW5Ir7sJstFxwZjI_LLn-ZcucqkFJ2IJdfzBU7nyihwRztEUP7Zs952B-IoPJw1FEgTsU_MVm4aATac8hd-7NQss4TXO-rVJ5Rr-GACP3Fqr_ZCEL9gT4wtZlLUXIxn7kvJLNpu-rW5MmxL9leWhX_HGmr5Ro9dRaZw==" method="POST" target="_blank" style="display: flex; gap: 10px; flex-wrap: wrap; width: 100%;">
+                            <input type="email" name="EMAIL" placeholder="Enter your email..." required style="flex: 1 1 120px; min-width: 0; padding: 10px; background: var(--bg-dark); border: 1px solid var(--border); color: var(--text); font-family: 'IBM Plex Mono', monospace; border-radius: 4px; box-sizing: border-box;">
+                            <button type="submit" class="pixel-btn" style="flex: 0 0 auto;">REGISTER ➔</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    `,
+    bio: `
+        <div class="bio-container" style="max-width: 850px; margin: 0 auto; padding: 2rem 1rem;">
+            <button class="pixel-btn" style="margin-bottom: 2rem;" onclick="navigate('contact')">◄ BACK TO CONTACT</button>
+            <h1 class="pixel-title" style="margin-bottom: 1.5rem;">ABOUT ME</h1>
+            
+            <div class="contact-card" style="padding: 2.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; line-height: 1.8; font-family: 'IBM Plex Mono', monospace; color: var(--text);">
+                <h2 style="color: var(--accent-green); font-family: 'VT323', monospace; font-size: 2.5rem; margin-bottom: 1rem;">Mohammed Nurul Huda</h2>
+                
+                <p style="margin-bottom: 1.2rem; color: var(--text-soft);">
+                    Physics Enthusiast & Hardware Builder
+                </p>
+                
+                <hr style="border: none; border-top: 1px dashed var(--border); margin: 1.5rem 0;">
+
+                <div class="about-me-text" style="font-size: 1rem; color: var(--text);">
+                    <p>I'm from Barishal, Bangladesh. I finished my SSC in the Science group this year(2026) and I'm now doing HSC, with Physics & Electrical Engineering as the goal. Honestly I can't picture myself doing anything else.</p>
+                    <p>Why?, Electrical circuits are the most honest thing I know. If you wire something wrong, it doesn't pretend, it just doesn't respond. It won't be polite about it, and you can't talk your way around it. You have to be true about every connection. I love that. It's the same reason I care so much about honesty with people: things work better when nobody is faking it.</p>
+                    <p>I also love exploring. I like taking things to their edge and asking how far they can actually go. Someday I want to build a proper home lab, a big one, where I can break things, fix them, and learn a lot along the way.</p>
+                    <p>When I'm not with circuits, I'm boxing. I'm an amateur, nothing fancy, and I also do a bit of athletics when I feel like it. Boxing taught me the same lesson wiring did: you can't fake it in the ring either.</p>
+                    <p>I don't have edge-cutting achievements to show yet, and I'm not going to pretend I do. What I have is curiosity, and I'm not planning to stop. I'm building this site as I go, so if you want to talk electronics, boxing, or just get to know each other in a real way, Say 'hi'. I'd love that.</p>
                 </div>
             </div>
         </div>
@@ -121,6 +148,7 @@ function navigate(pageId) {
     const app = document.getElementById('app');
     let bgClass = pageId;
     if (pageId === 'articles' || pageId === 'projects') bgClass = 'works';
+    if (pageId === 'bio') bgClass = 'contact';
     
     document.body.className = `bg-${bgClass}`;
 
@@ -251,7 +279,6 @@ navigate('home');
 // ADVANCED PHYSICS ENGINE: AIRCRAFT FLIGHT & CLOUD SIMULATOR
 // =========================================================
 document.addEventListener("DOMContentLoaded", () => {
-    // Footer cube scroll reveal animation
     const svg = document.getElementById('footer-svg');
     const footer = document.querySelector('footer');
     if (svg && footer) {
@@ -287,7 +314,6 @@ document.addEventListener("DOMContentLoaded", () => {
         mouse.active = false;
     });
 
-    // Cloud Class: Forward-moving pixelated atmosphere
     class Cloud {
         constructor() {
             this.reset(true);
@@ -318,7 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Aircraft Physics Class with Anti-Collision & Velocity Steering
     class Aircraft {
         constructor(type, color, size, baseXSpeed, baseYSpeed) {
             this.type = type;
@@ -335,7 +360,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         update(aircraftList) {
-            // 1. Repulsion from Mouse Cursor (Physics Dodge)
             if (mouse.active) {
                 let dx = this.x - mouse.x;
                 let dy = this.y - mouse.y;
@@ -347,7 +371,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            // 2. Inter-Vehicle Collision Avoidance (Self-Steering Avoidance)
             aircraftList.forEach(other => {
                 if (other === this) return;
                 let dx = this.x - other.x;
@@ -362,19 +385,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // 3. Return to Cruise Velocity (Damping)
             this.vx += (this.baseXSpeed - this.vx) * 0.03;
             if (this.type === 'rocket') {
-                this.vy += (-1.2 - this.vy) * 0.03; // Rocket ascends to galaxy
+                this.vy += (-1.2 - this.vy) * 0.03;
             } else {
                 this.vy += (this.baseYSpeed - this.vy) * 0.03;
             }
 
-            // 4. Update Position
             this.x += this.vx;
             this.y += this.vy;
 
-            // 5. Wrap / Bound Constraints
             if (this.type === 'rocket') {
                 if (this.y < -40 || this.x > width + 50) {
                     this.x = Math.random() * (width * 0.5);
@@ -387,7 +407,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (this.y > height - 40) { this.y = height - 40; this.vy *= -0.5; }
             }
 
-            // Calculate rotation angle matching direction vector (Prevents backwards flying)
             this.angle = Math.atan2(this.vy, this.vx);
         }
 
@@ -398,7 +417,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (this.type === 'plane') {
                 ctx.rotate(this.angle);
                 ctx.fillStyle = this.color;
-                // Forward facing jet wing design
                 ctx.beginPath();
                 ctx.moveTo(12, 0);
                 ctx.lineTo(-12, -10);
@@ -409,12 +427,10 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (this.type === 'rocket') {
                 ctx.rotate(this.angle + Math.PI / 2);
                 ctx.fillStyle = this.color;
-                // Rocket body & galaxy thruster flame
                 ctx.fillRect(-4, -10, 8, 18);
                 ctx.beginPath();
                 ctx.arc(0, -10, 4, Math.PI, 0);
                 ctx.fill();
-                // Thruster particle flame
                 ctx.fillStyle = '#ff9f43';
                 ctx.beginPath();
                 ctx.moveTo(-3, 8);
@@ -423,7 +439,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.closePath();
                 ctx.fill();
             } else if (this.type === 'ufo') {
-                // Alien UFO saucer with light glow
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
                 ctx.ellipse(0, 0, 14, 6, 0, 0, Math.PI * 2);
@@ -433,7 +448,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.arc(0, -3, 6, Math.PI, 0);
                 ctx.fill();
             } else if (this.type === 'balloon') {
-                // Hot Air Balloon with basket
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
                 ctx.arc(0, -5, 10, 0, Math.PI * 2);
@@ -441,13 +455,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.fillStyle = '#795548';
                 ctx.fillRect(-3, 8, 6, 5);
             } else if (this.type === 'drone') {
-                // Quadcopter Drone with spinning blades
                 ctx.rotate(this.angle * 0.2);
                 ctx.fillStyle = this.color;
                 ctx.fillRect(-8, -2, 16, 4);
                 ctx.fillRect(-2, -8, 4, 16);
+                
                 ctx.fillStyle = '#ffffff';
+                ctx.beginPath(); 
                 ctx.arc(-8, -8, 4, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.beginPath(); 
                 ctx.arc(8, 8, 4, 0, Math.PI * 2);
                 ctx.fill();
             }
