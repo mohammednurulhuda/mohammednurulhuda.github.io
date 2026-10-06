@@ -100,7 +100,7 @@ const views = {
                         </a>
                     </div>
                     
-                    <div style="font-family: 'IBM Plex Mono', monospace; margin-top: 2rem; color: var(--accent-green); border-top: 1px dashed var(--border); padding-top: 1rem; word-break: break-all;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; margin-top: 2rem; color: var(--accent-green); border-top: 1px dashed var(--border); padding-top: 1rem; word-break;">
                         ⮑ Direct Email: mohammednurulhuda2010@gmail.com
                     </div>
 
