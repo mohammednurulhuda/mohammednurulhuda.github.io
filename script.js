@@ -177,7 +177,7 @@ function openArticleByIndex(index) {
         <button class="pixel-btn" style="margin-bottom: 2rem;" onclick="navigate('articles')">◄ BACK TO ARTICLES</button>
         <h1 class="pixel-title" style="font-size:2.8rem; margin-bottom: 1rem;">${item.title}</h1>
         <div class="contact-card markdown-body" style="margin-top:1rem;">
-            ${item.media ? `<img src="${imageUrl}" style="width:100%; max-height:400px; object-fit:cover; border-radius:6px; border:2px solid #000;">` : ''}
+            ${item.media ? `<img src="${imageUrl}" style="width:100%; height:auto; border-radius:6px; border:2px solid #000;">` : ''}
             <div style="font-size:1.1rem; line-height:1.8; color:var(--text);">${formattedContent}</div>
         </div>
     `;
@@ -196,7 +196,7 @@ function openProjectByIndex(index) {
         <button class="pixel-btn" style="margin-bottom: 2rem;" onclick="navigate('projects')">◄ BACK TO PROJECTS</button>
         <h1 class="pixel-title" style="font-size:2.8rem; margin-bottom: 1rem;">${item.title}</h1>
         <div class="contact-card markdown-body" style="margin-top:1rem;">
-            ${item.media ? `<img src="${imageUrl}" style="width:100%; max-height:400px; object-fit:cover; border-radius:6px; border:2px solid #000;">` : ''}
+            ${item.media ? `<img src="${imageUrl}" style="width:100%; height:auto; border-radius:6px; border:2px solid #000;">` : ''}
             <div style="font-size:1.1rem; line-height:1.8; color:var(--text);">${formattedContent}</div>
         </div>
     `;
