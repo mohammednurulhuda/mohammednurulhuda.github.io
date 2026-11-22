@@ -203,41 +203,6 @@ function openProjectByIndex(index) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function loadArticles() {
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            articlesData = data.items || [];
-            const grid = document.getElementById('content-grid');
-            if (articlesData.length > 0 && grid) {
-                grid.innerHTML = articlesData.map((item, index) => {
-                    const imageUrl = item.media ? item.media : 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop';
-                    return `
-                    <div class="forum-card" onclick="openArticleByIndex(${index})">
-                        <div class="card-meta-top">MOHAMMED NURUL HUDA &bull; ARTICLE</div>
-                        <h3 class="card-title">${item.title}</h3>
-                        <div class="card-image-wrapper">
-                            <img src="${imageUrl}" alt="${item.title}">
-                        </div>
-                        <div class="card-footer">
-                            <span>READ ARTICLE ➔</span>
-                            <span>👾</span>
-                        </div>
-                    </div>
-                    `;
-                }).join('');
-            } else if (grid) {
-                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: NO ARTICLES PUBLISHED YET ]</p>';
-            }
-        })
-        .catch(err => {
-            const grid = document.getElementById('content-grid');
-            if (grid) {
-                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: DATA FILE NOT FOUND ]</p>';
-            }
-        });
-}
-
 function loadProjects() {
     fetch('projects.json')
         .then(response => response.json())
@@ -269,6 +234,41 @@ function loadProjects() {
             const grid = document.getElementById('projects-grid');
             if (grid) {
                 grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: DATABASE INITIALIZING... ]</p>';
+            }
+        });
+}
+
+function loadArticles() {
+    fetch('articles.json')
+        .then(response => response.json())
+        .then(data => {
+            articlesData = data.items || [];
+            const grid = document.getElementById('content-grid');
+            if (articlesData.length > 0 && grid) {
+                grid.innerHTML = articlesData.map((item, index) => {
+                    const imageUrl = item.media ? item.media : 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop';
+                    return `
+                    <div class="forum-card" onclick="openArticleByIndex(${index})">
+                        <div class="card-meta-top">MOHAMMED NURUL HUDA &bull; ARTICLE</div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <div class="card-image-wrapper">
+                            <img src="${imageUrl}" alt="${item.title}">
+                        </div>
+                        <div class="card-footer">
+                            <span>READ ARTICLE ➔</span>
+                            <span>👾</span>
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+            } else if (grid) {
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: NO ARTICLES PUBLISHED YET ]</p>';
+            }
+        })
+        .catch(err => {
+            const grid = document.getElementById('content-grid');
+            if (grid) {
+                grid.innerHTML = '<p style="color: var(--text-soft); font-family: \'IBM Plex Mono\', monospace;">[ SYSTEM MESSAGE: DATA FILE NOT FOUND ]</p>';
             }
         });
 }
